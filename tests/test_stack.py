@@ -19,3 +19,16 @@ class TestStack(unittest.TestCase):
         self.assertIs(self.stack.top.data, "again_new_data")
         self.assertIs(self.stack.top.next_node.data, "new_data")
         self.assertIs(self.stack.top.next_node.next_node.data, "data")
+
+    def test_pop(self):
+        stack1 = Stack()
+        stack1.push('data1')
+        stack1.push('data2')
+        del_data = stack1.pop()
+        self.assertIs(stack1.top.data, 'data1')
+        self.assertIs(del_data, 'data2')
+        stack2 = Stack()
+        stack2.push('dataaa')
+        del_data2 = stack2.pop()
+        self.assertIs(stack2.top, None)
+        self.assertIs(del_data2, 'dataaa')
