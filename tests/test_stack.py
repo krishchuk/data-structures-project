@@ -9,8 +9,6 @@ class TestStack(unittest.TestCase):
         self.stack = Stack()
 
     def test_push(self):
-        self.assertIsNone(self.stack.top.data)
-        self.assertIsNone(self.stack.top.next_node)
         self.stack.push("data")
         self.assertIs(self.stack.top.data, "data")
         self.assertIsNone(self.stack.top.next_node)
