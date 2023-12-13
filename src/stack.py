@@ -18,6 +18,11 @@ class Stack:
         """Конструктор класса Stack"""
         self.top = None
 
+    def __str__(self):
+        if self.top:
+            return f"Вершина стэка: {self.top.data}"
+        return "Пустой стэк"
+
     def push(self, data):
         """
         Метод для добавления элемента на вершину стека
@@ -37,4 +42,3 @@ class Stack:
         old_top = self.top.next_node
         self.top = old_top
         return deleted_data
-

@@ -32,3 +32,11 @@ class TestStack(unittest.TestCase):
         del_data2 = stack2.pop()
         self.assertIs(stack2.top, None)
         self.assertIs(del_data2, 'dataaa')
+
+    def test___str__(self):
+        stack3 = Stack()
+        self.assertMultiLineEqual(str(stack3), "Пустой стэк")
+        stack3.push(1)
+        self.assertMultiLineEqual(str(stack3), "Вершина стэка: 1")
+        stack3.push('2')
+        self.assertMultiLineEqual(str(stack3), "Вершина стэка: 2")
