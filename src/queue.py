@@ -20,7 +20,6 @@ class Queue:
         """Конструктор класса Queue"""
         self.tail = None
         self.head = None
-        self.all = []
 
     def enqueue(self, data):
         """
@@ -29,7 +28,6 @@ class Queue:
         :param data: данные, которые будут добавлены в очередь
         """
         node = Node(data, None)
-        self.all.append(data)
         if self.head is None:
             self.head = node
         else:
@@ -52,7 +50,9 @@ class Queue:
         """Магический метод для строкового представления объекта"""
         if self.head is None:
             return ""
-        else:
-
-            all_data = '\n'.join(self.all)
-            return all_data
+        head = self.head
+        all_data = []
+        while head:
+            all_data.append(head.data)
+            head = head.next_node
+        return '\n'.join(all_data)
