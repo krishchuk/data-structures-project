@@ -17,19 +17,17 @@ class LinkedList:
         new_node = Node(data)
         new_node.next_node = self.head
         self.head = new_node
+        if not self.tail:
+            self.tail = new_node
 
     def insert_at_end(self, data: dict) -> None:
         """Принимает данные (словарь) и добавляет узел с этими данными в конец связанного списка"""
         new_node = Node(data)
-        last = self.head
-        if last is None:
+        if self.tail:
+            self.tail.next_node = new_node
+        self.tail = new_node
+        if not self.head:
             self.head = new_node
-            self.tail = new_node
-        else:
-            while last.next_node:
-                last = last.next_node
-            last.next_node = new_node
-            self.tail = last.next_node
 
     def __str__(self) -> str:
         """Вывод данных односвязного списка в строковом представлении"""
