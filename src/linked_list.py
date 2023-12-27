@@ -1,5 +1,6 @@
 class Node:
     """Класс для узла односвязного списка"""
+
     def __init__(self, data):
         self.data = data
         self.next_node = None
@@ -11,6 +12,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+        self.data_list = []
 
     def insert_beginning(self, data: dict) -> None:
         """Принимает данные (словарь) и добавляет узел с этими данными в начало связанного списка"""
@@ -42,3 +44,21 @@ class LinkedList:
 
         ll_string += 'None'
         return ll_string
+
+    def to_list(self):
+        self.data_list = []
+        node = self.head
+        while node:
+            self.data_list.append(node.data)
+            node = node.next_node
+        return self.data_list
+
+    def get_data_by_id(self, id_key):
+        data_list = self.to_list()
+        for item in range(len(data_list)):
+            try:
+                for value in self.data_list[item].values():
+                    if value == id_key:
+                        return self.data_list[item]
+            except (TypeError, AttributeError):
+                print('Данные не являются словарем или в словаре нет id.')

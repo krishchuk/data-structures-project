@@ -29,3 +29,31 @@ class TestLinkedList(unittest.TestCase):
         self.ll.insert_at_end({'id': 3})
         self.ll.insert_beginning({'id': 1})
         self.assertMultiLineEqual(str(self.ll), "{'id': 1} -> {'id': 2} -> {'id': 3} -> None")
+
+    def test_to_list(self):
+        self.assertMultiLineEqual(str(self.ll), 'None')
+        self.ll.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+        self.assertMultiLineEqual(str(self.ll.to_list()), "[{'id': 1, 'username': 'lazzy508509'}]")
+        self.ll.insert_at_end({'id': 2, 'username': 'mik.roz'})
+        self.ll.insert_at_end({'id': 3, 'username': 'mosh_s'})
+        self.ll.insert_beginning({'id': 0, 'username': 'serebro'})
+        self.assertMultiLineEqual(str(self.ll.to_list()),
+                                  "[{'id': 0, 'username': 'serebro'}, "
+                                  "{'id': 1, 'username': 'lazzy508509'}, "
+                                  "{'id': 2, 'username': 'mik.roz'}, "
+                                  "{'id': 3, 'username': 'mosh_s'}]")
+
+    def test_get_data_by_id(self):
+        self.ll.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+        self.ll.insert_at_end({'id': 2, 'username': 'mik.roz'})
+        self.ll.insert_at_end({'id': 3, 'username': 'mosh_s'})
+        self.ll.insert_beginning({'id': 0, 'username': 'serebro'})
+        self.assertMultiLineEqual(str(self.ll.get_data_by_id(3)), "{'id': 3, 'username': 'mosh_s'}")
+
+    def test_get_data_by_id_error(self):
+        self.ll.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+        self.ll.insert_at_end('idusername')
+        self.ll.insert_at_end([1, 2, 3])
+        self.ll.insert_beginning({'id': 0, 'username': 'serebro'})
+        unittest.TestCase.assertRaises(self.ll.get_data_by_id(2), AttributeError)
+
