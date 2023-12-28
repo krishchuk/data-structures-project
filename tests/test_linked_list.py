@@ -55,5 +55,5 @@ class TestLinkedList(unittest.TestCase):
         self.ll.insert_at_end('idusername')
         self.ll.insert_at_end([1, 2, 3])
         self.ll.insert_beginning({'id': 0, 'username': 'serebro'})
-        unittest.TestCase.assertRaises(self.ll.get_data_by_id(2), AttributeError)
+        self.assertRaises(self.ll.get_data_by_id(2), AttributeError)
 
